@@ -29,3 +29,11 @@ class SimpleReport:
 
         return [manufacturing_dates, expiration_dates]
 
+    @staticmethod
+    def get_most_common_company(products_list):
+        companies = [product["nome_da_empresa"] for product in products_list]
+
+        most_common_company = Counter(companies).most_common()[0][0]
+        return most_common_company
+
+    
