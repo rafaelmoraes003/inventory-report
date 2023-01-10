@@ -14,3 +14,12 @@ class CompleteReport(SimpleReport):
 
         return products_by_company
 
+    @staticmethod
+    def format_companies_ocurrencies(companies: dict):
+        final_str = ""
+
+        for key in companies:
+            final_str += f"- {key}: {companies[key]}\n"
+
+        return final_str
+
