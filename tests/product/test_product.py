@@ -12,7 +12,6 @@ def test_cria_produto():
         instrucoes_de_armazenamento="Consume within 2 days of opening.",
     )
 
-    # SUCCESS
     assert (chocolate.id) == 1
     assert (chocolate.nome_da_empresa) == "Nestlé"
     assert (chocolate.nome_do_produto) == "Chocolate"
