@@ -20,21 +20,12 @@ class SimpleReport:
         return min(dates_from_today)
 
     @staticmethod
-    def generate(products_list: list[dict]):
-        manufacturing_dates, expiration_dates, companies = [], [], []
+    def get_dates(products_list: list[dict]):
+        manufacturing_dates, expiration_dates = [], []
 
         for product in products_list:
             manufacturing_dates.append(product["data_de_fabricacao"])
             expiration_dates.append(product["data_de_validade"])
-            companies.append(product["nome_da_empresa"])
 
-        most_common_company = Counter(companies).most_common()[0][0]
-        nearest_expiration_date = SimpleReport.nearest_date_from_today(
-            expiration_dates
-        )
+        return [manufacturing_dates, expiration_dates]
 
-        return (
-            f"Data de fabricação mais antiga: {min(manufacturing_dates)}\n"
-            f"Data de validade mais próxima: {nearest_expiration_date}\n"
-            f"Empresa com mais produtos: {most_common_company}"
-        )
