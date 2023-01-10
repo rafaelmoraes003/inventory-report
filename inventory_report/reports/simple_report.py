@@ -48,6 +48,8 @@ class SimpleReport:
             products_list
         )
 
+        # teste
+
         return (
             f"Data de fabricação mais antiga: {min(manufacturing_dates)}\n"
             f"Data de validade mais próxima: {nearest_expiration_date}\n"
