@@ -36,4 +36,20 @@ class SimpleReport:
         most_common_company = Counter(companies).most_common()[0][0]
         return most_common_company
 
-    
+    @staticmethod
+    def generate(products_list: list[dict]):
+        [manufacturing_dates, expiration_dates] = SimpleReport.get_dates(
+            products_list
+        )
+        nearest_expiration_date = SimpleReport.nearest_date_from_today(
+            expiration_dates
+        )
+        most_common_company = SimpleReport.get_most_common_company(
+            products_list
+        )
+
+        return (
+            f"Data de fabricação mais antiga: {min(manufacturing_dates)}\n"
+            f"Data de validade mais próxima: {nearest_expiration_date}\n"
+            f"Empresa com mais produtos: {most_common_company}"
+        )
