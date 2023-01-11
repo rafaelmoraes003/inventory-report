@@ -8,9 +8,9 @@ from inventory_report.importer.xml_importer import XmlImporter
 reports = {"simples": SimpleReport, "completo": CompleteReport}
 
 actions_by_file_extension = {
-    "csv": lambda path: CsvImporter(path),
-    "json": lambda path: JsonImporter(path),
-    "xml": lambda path: XmlImporter(path),
+    "csv": lambda path: CsvImporter.import_data(path),
+    "json": lambda path: JsonImporter.import_data(path),
+    "xml": lambda path: XmlImporter.import_data(path),
 }
 
 
