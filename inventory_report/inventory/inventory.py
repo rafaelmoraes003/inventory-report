@@ -4,6 +4,8 @@ import csv
 import json
 import xmltodict
 
+reports = {"simples": SimpleReport, "completo": CompleteReport}
+
 actions_by_file_extension = {
     "csv": lambda file: list(
         csv.DictReader(file, delimiter=",", quotechar='"')
@@ -21,3 +23,9 @@ class Inventory:
             extension = file_path.split(".")[1]
             data = actions_by_file_extension[extension](file)
         return data
+
+    @classmethod
+    def import_data(cls, file_path, report_type):
+        products_list = cls.read_data(file_path)
+        products_report = reports[report_type].generate(products_list)
+        return products_report
