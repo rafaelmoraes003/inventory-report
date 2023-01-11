@@ -9,7 +9,7 @@ def test_cria_produto():
         data_de_fabricacao="2023-01-01",
         data_de_validade="2025-01-01",
         numero_de_serie="12345678",
-        instrucoes_de_armazenamento="Consume within 2 days of opening.",
+        instrucoes_de_armazenamento="In a cool and dry place",
     )
 
     assert (chocolate.id) == 1
@@ -18,9 +18,7 @@ def test_cria_produto():
     assert (chocolate.data_de_fabricacao) == "2023-01-01"
     assert (chocolate.data_de_validade) == "2025-01-01"
     assert (chocolate.numero_de_serie) == "12345678"
-    assert (
-        chocolate.instrucoes_de_armazenamento
-    ) == "Consume within 2 days of opening."
+    assert (chocolate.instrucoes_de_armazenamento) == "In a cool and dry place"
 
     assert (chocolate.data_de_fabricacao) != "01/01/2023"
     assert (chocolate.data_de_validade) != "01/01/2025"
