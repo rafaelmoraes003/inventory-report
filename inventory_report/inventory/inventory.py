@@ -1,17 +1,16 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-import csv
-import json
-import xmltodict
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
+
 
 reports = {"simples": SimpleReport, "completo": CompleteReport}
 
 actions_by_file_extension = {
-    "csv": lambda file: list(
-        csv.DictReader(file, delimiter=",", quotechar='"')
-    ),
-    "json": lambda file: json.load(file),
-    "xml": lambda file: xmltodict.parse(file.read())["dataset"]["record"],
+    "csv": lambda path: CsvImporter(path),
+    "json": lambda path: JsonImporter(path),
+    "xml": lambda path: XmlImporter(path),
 }
 
 
@@ -19,9 +18,7 @@ class Inventory:
     @staticmethod
     def read_data(file_path):
         extension = file_path.split(".")[1]
-        with open(file_path, mode="r") as file:
-            extension = file_path.split(".")[1]
-            data = actions_by_file_extension[extension](file)
+        data = actions_by_file_extension[extension](file_path)
         return data
 
     @classmethod
