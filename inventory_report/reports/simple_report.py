@@ -4,7 +4,7 @@ from collections import Counter
 
 class SimpleReport:
     @staticmethod
-    def nearest_date_from_today(dates: list[str]):
+    def nearest_date_from_today(dates):
         dates_from_today = []
 
         for date in dates:
@@ -20,7 +20,7 @@ class SimpleReport:
         return min(dates_from_today)
 
     @staticmethod
-    def get_dates(products_list: list[dict]):
+    def get_dates(products_list):
         manufacturing_dates, expiration_dates = [], []
 
         for product in products_list:
@@ -37,7 +37,7 @@ class SimpleReport:
         return most_common_company
 
     @staticmethod
-    def generate(products_list: list[dict]):
+    def generate(products_list):
         [manufacturing_dates, expiration_dates] = SimpleReport.get_dates(
             products_list
         )
@@ -47,8 +47,6 @@ class SimpleReport:
         most_common_company = SimpleReport.get_most_common_company(
             products_list
         )
-
-        # teste
 
         return (
             f"Data de fabricação mais antiga: {min(manufacturing_dates)}\n"

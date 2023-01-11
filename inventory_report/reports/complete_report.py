@@ -3,7 +3,7 @@ from inventory_report.reports.simple_report import SimpleReport
 
 class CompleteReport(SimpleReport):
     @staticmethod
-    def get_companies_occurrences(products_list: list[dict]):
+    def get_companies_occurrences(products_list):
         products_by_company = {}
 
         for product in products_list:
@@ -15,7 +15,7 @@ class CompleteReport(SimpleReport):
         return products_by_company
 
     @staticmethod
-    def format_companies_ocurrencies(companies: dict):
+    def format_companies_ocurrencies(companies):
         final_str = ""
 
         for key in companies:
@@ -24,7 +24,7 @@ class CompleteReport(SimpleReport):
         return final_str
 
     @staticmethod
-    def generate(products_list: list[dict]):
+    def generate(products_list):
         [manufacturing_dates, expiration_dates] = CompleteReport.get_dates(
             products_list
         )
