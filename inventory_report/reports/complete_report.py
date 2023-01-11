@@ -23,29 +23,14 @@ class CompleteReport(SimpleReport):
 
         return final_str
 
-    @staticmethod
-    def generate(products_list):
-        [manufacturing_dates, expiration_dates] = CompleteReport.get_dates(
-            products_list
+    @classmethod
+    def generate(cls, products_list):
+        companies_occurrences = cls.get_companies_occurrences(products_list)
+        formated_companies_occurrences = cls.format_companies_ocurrencies(
+            companies_occurrences
         )
-        nearest_expiration_date = CompleteReport.nearest_date_from_today(
-            expiration_dates
-        )
-        most_common_company = CompleteReport.get_most_common_company(
-            products_list
-        )
-        companies_occurrences = CompleteReport.get_companies_occurrences(
-            products_list
-        )
-
-        formated_companies_occurrences = (
-            CompleteReport.format_companies_ocurrencies(companies_occurrences)
-        )
-
         return (
-            f"Data de fabricação mais antiga: {min(manufacturing_dates)}\n"
-            f"Data de validade mais próxima: {nearest_expiration_date}\n"
-            f"Empresa com mais produtos: {most_common_company}\n"
+            f"{SimpleReport.generate(products_list)}\n"
             "Produtos estocados por empresa:\n"
             f"{formated_companies_occurrences}"
         )
