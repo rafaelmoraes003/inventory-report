@@ -20,3 +20,5 @@ def main():
     inventory = InventoryRefactor(importer)
     report = inventory.import_data(file_path, report_type)
     print(report, end="")
+
+main()
