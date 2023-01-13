@@ -39,6 +39,6 @@ Clone the application using the `git clone` command. After that, enter the proje
 1. Simple Report: `python3 -m inventory_report.main inventory_report/data/inventory.csv simples`
 2. Complete Report: `python3 -m inventory_report.main inventory_report/data/inventory.csv completo`
 
-## `Important: Only csv, json and xml file are allowed.`
+## `Important: Only csv, json and xml files are allowed.`
 
 ###
