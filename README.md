@@ -20,7 +20,7 @@
 
 ###
 
-Clone the application using the `git clone` command. After that, enter the project folder using the command `cd-inventory-report`.
+Clone the application using the `git clone` command. After that, enter the project folder using the command `cd inventory-report`.
 
 ###
 
